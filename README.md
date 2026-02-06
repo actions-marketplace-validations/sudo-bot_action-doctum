@@ -16,7 +16,7 @@ You can find the image on [Docker Hub](https://hub.docker.com/r/botsudo/action-d
 ## Example usage for 5.x series
 
 ```yml
-  - uses: actions/checkout@v4
+  - uses: actions/checkout@v6
   - name: build doctum docs
     uses: sudo-bot/action-doctum@v5
     with:
@@ -30,7 +30,7 @@ You can find the image on [Docker Hub](https://hub.docker.com/r/botsudo/action-d
 ## Example usage for latest series
 
 ```yml
-  - uses: actions/checkout@v4
+  - uses: actions/checkout@v6
   - name: build doctum docs
     uses: sudo-bot/action-doctum@latest
     with:
@@ -44,7 +44,7 @@ You can find the image on [Docker Hub](https://hub.docker.com/r/botsudo/action-d
 ## Example usage for dev series
 
 ```yml
-  - uses: actions/checkout@v4
+  - uses: actions/checkout@v6
   - name: build doctum docs
     uses: sudo-bot/action-doctum@dev
     with:
@@ -60,14 +60,17 @@ You can find the image on [Docker Hub](https://hub.docker.com/r/botsudo/action-d
 ```yml
 name: Lint phpdocs
 
+permissions:
+    contents: read
+
 on: [push]
 
 jobs:
   lint-phpdoc:
-    name: lint-phpdoc
+    name: Lint phpdocs
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Create a config file
         # Scan all the src folder
         run: echo "<?php return new Doctum\Doctum('src/');" > doctum-config.php
